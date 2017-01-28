@@ -12,8 +12,8 @@ CLIENT_COUNT=$(( ${CLIENT_CONFIG_COUNT} > 1 ? ${CLIENT_CONFIG_COUNT} : 1 ))
 CLIENTS_DIR="${OPENVPN}/clients"
 [ -d ${CLIENTS_DIR} ] || mkdir -p ${CLIENTS_DIR}
 
-for i in {1..${CLIENT_COUNT}}; do
-    CLIENT_NAME="client${i}"
+for (( c=1; c<=${CLIENT_COUNT}; c++ )); do
+    CLIENT_NAME="client${c}"
     CLIENT_FILE="${CLIENTS_DIR}/${CLIENT_NAME}.ovpn"
     if [ -f ${CLIENT_FILE} ]; then
         continue
