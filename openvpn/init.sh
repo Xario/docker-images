@@ -5,7 +5,7 @@ fi
 
 source "${OPENVPN}/ovpn_env.sh"
 if [ ! -f ${EASYRSA_PKI}/ta.key ]; then
-    /usr/local/bin/ovpn_initpki nopass
+    echo "FreeNAS\n" | /usr/local/bin/ovpn_initpki nopass
 fi
 
 CLIENT_COUNT=$(( ${CLIENT_CONFIG_COUNT} > 1 ? ${CLIENT_CONFIG_COUNT} : 1 ))

@@ -9,6 +9,7 @@ LABEL org.freenas.interactive="false"			\
       org.freenas.expose-ports-at-host="true" 		\
       org.freenas.autostart="true" 			\
       org.freenas.bridged="true" 			\
+      org.freenas.capabilities-add="[\"NET_ADMIN\"]"        \
       org.freenas.port-mappings="1194:1194/udp" 					\
       org.freenas.volumes="[				\
           {						\
