@@ -13,7 +13,7 @@ LABEL org.freenas.interactive="false"			\
       org.freenas.port-mappings="1194:1194/udp" 					\
       org.freenas.volumes="[				\
           {						\
-              \"name\": \"/config\",			\
+              \"name\": \"/etc/openvpn\",			\
               \"descr\": \"Config storage space\"	\
           }				\
       ]"						\
