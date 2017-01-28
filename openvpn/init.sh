@@ -4,7 +4,7 @@ if [ ! -f ${OPENVPN:-}/openvpn.conf ]; then
 fi
 
 source "${OPENVPN}/ovpn_env.sh"
-if [ ! -f ${EASYRSA_PKI}/ta.key ]; then
+if [ ! -d ${EASYRSA_PKI} ]; then
     echo "FreeNAS\n" | /usr/local/bin/ovpn_initpki nopass
 fi
 
