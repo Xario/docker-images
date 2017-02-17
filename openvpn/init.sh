@@ -21,6 +21,8 @@ for (( c=1; c<=${CLIENT_COUNT}; c++ )); do
 
     /usr/local/bin/easyrsa build-client-full ${CLIENT_NAME} nopass
     /usr/local/bin/ovpn_getclient ${CLIENT_NAME} > ${CLIENT_FILE}
+    echo "dhcp-option DNS 192.168.255.1" >> ${CLIENT_FILE}
+    echo "dhcp-option DNS 8.8.8.8" >> ${CLIENT_FILE}
 done
 
 /usr/local/bin/ovpn_run

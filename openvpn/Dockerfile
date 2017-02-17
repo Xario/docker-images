@@ -3,7 +3,7 @@ ADD init.sh /init.sh
 RUN chmod a+x /init.sh
 CMD ["/init.sh"]
 LABEL org.freenas.interactive="false"			\
-      org.freenas.version="1.3.3.3148" 			\
+      org.freenas.version="1.0.0" 			\
       org.freenas.upgradeable="true" 			\
       org.freenas.expose-ports-at-host="true" 		\
       org.freenas.autostart="true" 			\
