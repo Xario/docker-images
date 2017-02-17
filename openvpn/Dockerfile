@@ -1,6 +1,7 @@
 FROM kylemanna/openvpn:latest
 ADD init.sh /init.sh
 RUN chmod a+x /init.sh
+RUN apk --no-cache add dnsmasq
 CMD ["/init.sh"]
 LABEL org.freenas.interactive="false"			\
       org.freenas.version="1.0.0" 			\

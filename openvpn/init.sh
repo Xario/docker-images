@@ -24,5 +24,5 @@ for (( c=1; c<=${CLIENT_COUNT}; c++ )); do
     echo "dhcp-option DNS 192.168.255.1" >> ${CLIENT_FILE}
     echo "dhcp-option DNS 8.8.8.8" >> ${CLIENT_FILE}
 done
-
+/usr/sbin/dnsmasq
 /usr/local/bin/ovpn_run
