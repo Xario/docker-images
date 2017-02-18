@@ -2,6 +2,7 @@ FROM kylemanna/openvpn:latest
 ADD init.sh /init.sh
 RUN chmod a+x /init.sh
 RUN apk --no-cache add dnsmasq
+RUN apk --no-cache add curl
 CMD ["/init.sh"]
 LABEL org.freenas.interactive="false"			\
       org.freenas.version="1.0.0" 			\
@@ -23,9 +24,14 @@ LABEL org.freenas.interactive="false"			\
               \"descr\": \"The domain name of the server e.g. example.com\",	\
               \"optional\": false			\
           },						\
+           {						\
+               \"env\": \"CLIENT_CONFIG_COUNT\",		\
+               \"descr\": \"The number of client configs to generate upon initialization (default=1). They will be located in the /config/clients dir.\",	\
+               \"optional\": true			\
+           },						\
           {						\
-              \"env\": \"CLIENT_CONFIG_COUNT\",		\
-              \"descr\": \"The number of client configs to generate upon initialization (default=1). They will be located in the /config/clients dir.\",	\
+              \"env\": \"BLOCK_ADS\",		\
+              \"descr\": \"If true, dnsmasq will redirect known adserver DNS requests to the VPN server\",	\
               \"optional\": true			\
           } 						\
       ]"
