@@ -1,6 +1,8 @@
 FROM kylemanna/openvpn:latest
 ADD init.sh /init.sh
 RUN chmod a+x /init.sh
+ADD adblock.sh /adblock.sh
+RUN chmod a+x /adblock.sh
 RUN apk --no-cache add dnsmasq
 RUN apk --no-cache add curl
 CMD ["/init.sh"]
