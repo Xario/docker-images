@@ -14,12 +14,10 @@ fi
 
 # if we have "--link some-docker:docker" and not DOCKER_HOST, let's set DOCKER_HOST automatically
 if [ -z "$DOCKER_HOST" -a "$DOCKER_PORT_2375_TCP" ]; then
-	export DOCKER_HOST='tcp://freenas:2375'
+	export DOCKER_HOST='tcp://docker:2375'
 fi
 
-echo "export DOCKER_HOST='${DOCKER_HOST}'" >> /etc/profile
 echo "PATH=${PATH}" > /root/.ssh/environment
-echo "DOCKER_HOST=${DOCKER_HOST}" >> /root/.ssh/environment
 
 [ -f /etc/ssh/ssh_host_rsa_key ] || ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -q -N ""
 [ -f /etc/ssh/ssh_host_dsa_key ] || ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key  -q -N ""

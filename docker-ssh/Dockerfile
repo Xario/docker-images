@@ -5,7 +5,6 @@ RUN echo "PermitUserEnvironment yes" >> /etc/ssh/sshd_config
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 RUN mkdir -p /root/.ssh
-ENV DOCKER_HOST tcp://freenas:2375
 EXPOSE 22
 LABEL org.freenas.interactive="false"			\
       org.freenas.version="1.0.0" 			\
@@ -19,12 +18,9 @@ LABEL org.freenas.interactive="false"			\
           {						\
               \"name\": \"/docker.pub\",			\
               \"descr\": \"docker public ssh key\"	\
-          }				\
-      ]"						\
-      org.freenas.settings="[ 				\
+          }, \
           {						\
-              \"env\": \"DOCKER_HOST\",		\
-              \"descr\": \"The hostname of your freenas server (default: tcp://freenas:2375)\",	\
-              \"optional\": false			\
-          } 						\
+              \"name\": \"/var/run/docker.sock\",			\
+              \"descr\": \"docker socket, use: /var/run/docker.sock on the host\"	\
+          }				\
       ]"
