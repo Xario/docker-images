@@ -26,6 +26,4 @@ echo "DOCKER_HOST=${DOCKER_HOST}" >> /root/.ssh/environment
 [ -f /etc/ssh/ssh_host_ecdsa_key ] || ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key  -q -N ""
 [ -f /docker.pub ] && cp /docker.pub /root/.ssh/authorized_keys
 
-/usr/sbin/sshd &
-
-exec "$@"
+exec /usr/sbin/sshd -D &>/dev/null
