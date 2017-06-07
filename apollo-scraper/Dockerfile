@@ -6,7 +6,7 @@ LABEL org.freenas.interactive="false"			\
       org.freenas.bridged="true" 			\
       org.freenas.volumes="[				\
           {						\
-              \"name\": \"/tavels.gob\",			\
+              \"name\": \"/travels.gob\",			\
               \"descr\": \"Config storage space\"	\
           }				\
       ]"						\
