@@ -21,6 +21,6 @@ LABEL org.freenas.interactive="false"			\
           }, \
           {						\
               \"name\": \"/var/run/docker.sock\",			\
-              \"descr\": \"docker socket, use: /var/run/docker.sock on the host\"	\
+              \"descr\": \"docker socket, use: /var/run/docker.sock on the VM\"	\
           }				\
       ]"
