@@ -5,18 +5,16 @@ These are the docker image *source files* for everything one sees in the default
 Here are all of the various "knob settings" specific to FreeNAS which your container can set, and their meanings.  In most cases, the user can also choose to override these settings at container creation time if the defaults are not suitable to their needs.
 * `org.freenas.autostart`  (default value: "false")
 Whether container should be set to automatically start at boot time or not.
-* `org.freenas.bridged` (default value: "false", e.g. NAT)
-Whether container should use bridged or NAT networking by default.
-* `org.freenas.capabilities-add` (default value: [])
-A list of Docker capabilities to add to container's privileges, in the form of an array of strings, e.g. `"[\"SYS_ADMIN\", \"SYS_MODULE\"]"`. See https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities for a full list of Docker privileges.
-* `org.freenas.capabilities-drop` (default value: [])
-A list of Docker capabilities to remove from container's privileges, in the form of an array of strings, e.g. `"[\"SYS_CHROOT\", \"SETCAP\"]"`. See https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities for a full list of Docker privileges that are set by deafult and can be removed.  Warning:  This may cause containers to malfunction if used incorrectly!
+* `org.freenas.capabilities-add` (default value: "")
+A list of Docker capabilities to add to container's privileges, in the form of a comma-separated string values, e.g. `SYS_ADMIN,SYS_MODULE`. See https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities for a full list of Docker privileges.
+* `org.freenas.capabilities-drop` (default value: "")
+A list of Docker capabilities to remove from container's privileges, in the form of a comma-separated string values, e.g. `SYS_CHROOT,SETCAP`. See https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities for a full list of Docker privileges that are set by deafult and can be removed.  Warning:  This may cause containers to malfunction if used incorrectly!
+* `org.freenas.command` (default value: "")
+A command to be run in the container, e.g. `/bin/sh`.
 * `org.freenas.privileged` (default value: "false").
 This is a boolean property which allows all extra privileges for a container to be turned on (e.g. "the big hammer").  It should only be used with caution, when absolutely required or when docker security is simply not a concern.
-* `org.freenas.dhcp` (default value: "false")
-Whether container should use DHCP to obtain an IP address.  Only applies to bridged="true" containers.
 * `org.freenas.expose-ports-at-host` (default value: "false")
-Whether container should expose its ports list on the host's IP address.  Only applies to bridged="false" (e.g. NAT'd) containers.
+Whether container should expose its ports list on the host's IP address.
 * `org.freenas.interactive'` (default value: "false")
 Whether container is an interactive container or not, which is to say that its Console will attach to a single, interactive process (and when this process exits, that container will stop).  Generally only useful for "raw OS" containers like Ubuntu.
 * `org.freenas.port-mappings` (default value: none)
@@ -24,7 +22,7 @@ A list of container:host port mappings for the container in the following format
 * `org.freenas.settings` (default value: [])
 An array of `variable name`: `Long description` fields for various variables the container wishes to export as "user settable" (this need not be every possible variable the container supports, but those the container author wishes the user to see and set).
 * `org.freenas.static-volumes` (default value: [])
-An array of directory or file mapping dictionary entries that should be set just to allow the container to work at all and aren't user visible or settable (see `org.freenas.volumes` below for user-settable volume options).  Format for each dictionary entry is `name` and `descr` for the directory/filename and description, respectively (see existing Dockerfile for more helpful examples).
+An array of directory or file mapping dictionary entries that should be set just to allow the container to work at all and aren't user visible or settable (see `org.freenas.volumes` below for user-settable volume options).  Format for each dictionary entry is `container_path`, `host_path`, and `readonly`. `container_path`refers to the directory/filename on the container, `host_path` the directory/filename on the host, and `readonly` whether the container can write to the directory/filename on the host. See existing Dockerfile for more helpful examples.
 * `org.freenas.upgradeable` (default value: "false")
 If set to true, the container is capable of upgarding itself internally.
 * `org.freenas.version` (default value: '0')
@@ -41,16 +39,16 @@ If the web UI requires a specific protocol, this property should be set
 # Making your own Docker container(s) for FreeNAS
 Perhaps you have a favorite Docker container that you think would be great for FreeNAS, in which case the FreeNAS 10 project happily accepts pull requests against this repo, but how might you test it first? How, for that matter, could you and your friends create your own *collections* of Docker containers for your own use?  We're glad you asked! The process is actually quite simple, so let's just dive right into the steps required:
 
-1. First, log into your gibhub account and fork this repo by clicking that little **fork** icon in the upper-right corner.  Just for the purpose of this tutorial, let's say your github account name is **inigomontoya** and you've just clicked the *fork* button, so now you have a github repo called https://github.com/inigomontoya/docker-images to work with. You are now ready to proceed to the next step.
+1. First, log into your GitHub account and fork this repo by clicking that little **fork** icon in the upper-right corner.  Just for the purpose of this tutorial, let's say your github account name is **inigomontoya** and you've just clicked the *fork* button, so now you have a github repo called https://github.com/inigomontoya/docker-images to work with. You are now ready to proceed to the next step.
 
 1. Working from a checkout of this repo, first look for a container that looks similar to the one you want to create and then use it as your template.  In this example, we'll create a new Dockerfire for the popular [Ghost](https://hub.docker.com/r/library/ghost/) container:
-```
-git clone https://github.com/inigomontoya/docker-images
-cd docker-images
-cp -r plex ghost
-cd ghost
-vi Dockerfile
-```
+    ```
+    git clone https://github.com/inigomontoya/docker-images
+    cd docker-images
+    cp -r plex ghost
+    cd ghost
+    vi Dockerfile
+    ```
 1. Now we want to use the editor to change `FROM timhaak/plex:latest` to `FROM ghost:latest`, the `version` string to *0.11*, the web UI port to *2368*, and so on.  See the actual [Dockerfile](https://github.com/freenas/docker-images/blob/master/ghost/Dockerfile) to see the finished example.  The most important attributes will be the *org.freenas.port-mappings*, *org.freenas.volumes* and *org.freenas.settings* fields - these allow the FreeNAS Docker interfaces to expose the ports, volumes and variable settings for the container as appropriate.  If the container is able to update itself, other properties like *upgradable* should be set - again, the existing docker-images are the best working examples, which is why we suggest you start from one of them and then change just the "obvious" things until you get closer to an ideal Dockerfile.  Check it in with `git commit` and `git push` and then move to the next step!
 
 1. If you would like the Docker container to have some documentation associated with it, always a good idea, which will also be displayed by the `readme` sub-command in the CLI (or per-container README button in the UI) then also include a README.md file with your Dockerfile.  It can contain any text in the standard markdown format.

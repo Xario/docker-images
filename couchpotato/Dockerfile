@@ -1,6 +1,6 @@
 FROM linuxserver/couchpotato:latest
 LABEL org.freenas.interactive="false" \
-      org.freenas.version=1 \
+      org.freenas.version="1.0.1" \
       org.freenas.upgradeable="true" \
       org.freenas.expose-ports-at-host="true" \
       org.freenas.autostart="true" \
@@ -31,6 +31,15 @@ LABEL org.freenas.interactive="false" \
               \"env\": \"TZ\",						\
               \"descr\": \"Timezone - eg Europe/London\",		\
               \"optional\": true					\
+          },								\
+          {								\
+              \"env\": \"PUID\",					\
+              \"descr\": \"User ID - eg 1000\",                         \
+              \"optional\": true					\
+          },								\
+          {								\
+              \"env\": \"PGID\",					\
+              \"descr\": \"Group ID - eg 1000\",            		\
+              \"optional\": true					\
           }								\
       ]"
-
