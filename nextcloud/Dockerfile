@@ -1,4 +1,4 @@
-FROM nextcloud:fpm
+FROM nextcloud:11-fpm
 LABEL org.freenas.interactive="false"                           \
       org.freenas.version="2"                                   \
       org.freenas.upgradeable="true"                            \
