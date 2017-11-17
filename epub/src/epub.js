@@ -1010,6 +1010,7 @@ app.get('/books', function (req, res) {
             res.writeHead(200);
             data['menu'] = getMenuItems(req);
             var html = booksTpl(data);
+            res.setHeader('Content-type', 'text/html');
             res.end(html);
         }
     );
@@ -1022,6 +1023,7 @@ app.get('/disclaimer', function (req, res) {
     };
 
     var html = disclaimerTpl(data);
+    res.setHeader('Content-type', 'text/html');
     res.end(html);
 });
 
@@ -1035,6 +1037,7 @@ app.get('/login', function (req, res) {
 
     data['menu'] = getMenuItems(req);
     var html = loginTpl(data);
+    res.setHeader('Content-type', 'text/html');
     res.end(html);
 });
 
