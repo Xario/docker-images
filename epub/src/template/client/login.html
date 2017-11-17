@@ -1,0 +1,169 @@
+{% extends 'layout.html' %}
+
+{% block subTitle %}log ind{% endblock %}
+
+{% block css %}
+<link media='all' type='text/css' href='/css/chosen.min.css' rel='stylesheet'/>
+<link media='all' type='text/css' href='/css/login.css' rel='stylesheet'/>
+{% endblock %}
+
+{% block script %}
+<script src='/js/chosen.jquery.min.js'></script>
+<script src='/js/login.js'></script>
+{% endblock %}
+
+{% block content %}
+
+<div class='column'>
+    <span class='columnHeader'>Log ind</span>
+
+    <form method='POST' action='/login'>
+        <div class='box'>
+            <ul class='formList'>
+                <li class='inputHeader'>CPR-nr. / lånerkortnr</li>
+                <li class='inputItem'>
+                    <input id='name' type='password' name='name' pattern='[0-9]*' inputmode='numeric' tabindex='1'/>
+                </li>
+            </ul>
+        </div>
+
+        <div class='box'>
+            <ul class='formList'>
+                <li class='inputHeader'>Pin kode</li>
+                <li class='inputItem'>
+                    <input id='pass' type='password' name='pass' pattern='[0-9]*' inputmode='numeric' tabindex='2'/>
+                </li>
+            </ul>
+        </div>
+
+        <div class='box'>
+            <ul class='formList'>
+                <li class='inputHeader'>Bibliotek</li>
+                <li class='inputItem'>
+                    <select name='retailer' tabindex='3'>
+                        <option value='881'>Albertslund</option>
+                        <option value='952'>Allerød</option>
+                        <option value='953'>AssensBibliotekerne</option>
+                        <option value='843'>Ballerup</option>
+                        <option value='850'>Billund</option>
+                        <option value='865'>Bornholm</option>
+                        <option value='860'>Brøndby</option>
+                        <option value='886'>Brønderslev</option>
+                        <option value='905'>Dragør</option>
+                        <option value='898'>Egedal</option>
+                        <option value='826'>Esbjerg</option>
+                        <option value='888'>Favrskov</option>
+                        <option value='895'>Faxe</option>
+                        <option value='855'>Fredensborg</option>
+                        <option value='891'>Fredericia</option>
+                        <option value='823'>Frederiksberg</option>
+                        <option value='880'>Frederikshavn</option>
+                        <option value='870'>Frederikssund</option>
+                        <option value='908'>Furesø</option>
+                        <option value='840'>Faaborg-Midtfyn</option>
+                        <option value='832'>Gentofte</option>
+                        <option value='863'>Gladsaxe</option>
+                        <option value='856'>Glostrup</option>
+                        <option value='830'>Greve</option>
+                        <option value='903'>Gribskov</option>
+                        <option value='873'>Guldborgsund</option>
+                        <option value='851'>Haderslev</option>
+                        <option value='887'>Halsnæs</option>
+                        <option value='912'>Hedensted</option>
+                        <option value='896'>Helsingør</option>
+                        <option value='866'>Herlev</option>
+                        <option value='828'>Herning</option>
+                        <option value='861'>Hillerød</option>
+                        <option value='867'>Hjørring</option>
+                        <option value='899'>Holbæk</option>
+                        <option value='847'>Horsens</option>
+                        <option value='853'>Hvidovre</option>
+                        <option value='875'>Høje-Taastrup</option>
+                        <option value='871'>Hørsholm</option>
+                        <option value='835'>Ikast-Brande</option>
+                        <option value='868'>Ishøj</option>
+                        <option value='902'>Jammerbugt</option>
+                        <option value='910'>Kalundborg Bibliotek</option>
+                        <option value='917'>Kerteminde</option>
+                        <option value='878'>Kolding</option>
+                        <option value='810'>København</option>
+                        <option value='872'>Køge</option>
+                        <option value='852'>Langeland</option>
+                        <option value='935'>Lejre</option>
+                        <option value='911'>Lemvig Bibliotek</option>
+                        <option value='874'>Lolland</option>
+                        <option value='857'>Lyngby</option>
+                        <option value='842'>Mariagerfjord</option>
+                        <option value='864'>Middelfart</option>
+                        <option value='904'>Morsø</option>
+                        <option value='906'>Norddjurs Biblioteker</option>
+                        <option value='950'>Nordfyn</option>
+                        <option value='858'>Nyborg</option>
+                        <option value='831'>Næstved</option>
+                        <option value='876'>Odder</option>
+                        <option value='825'>Odense</option>
+                        <option value='879'>Odsherred</option>
+                        <option value='916'>Randers</option>
+                        <option value='862'>Rebild</option>
+                        <option value='845'>Ringkøbing-Skjern</option>
+                        <option value='884'>Ringsted</option>
+                        <option value='824'>Roskilde</option>
+                        <option value='841'>Rudersdal</option>
+                        <option value='838'>Rødovre</option>
+                        <option value='936'>Samsø</option>
+                        <option value='829'>Silkeborg</option>
+                        <option value='883'>Skanderborg</option>
+                        <option value='907'>Skive</option>
+                        <option value='894'>Slagelse</option>
+                        <option value='844'>Solrød</option>
+                        <option value='848'>Sorø</option>
+                        <option value='882'>Stevns</option>
+                        <option value='869'>Struer</option>
+                        <option value='897'>Svendborg</option>
+                        <option value='892'>Syddjurs</option>
+                        <option value='889'>Sydslesvig</option>
+                        <option value='836'>Sønderborg</option>
+                        <option value='885'>Thisted</option>
+                        <option value='900'>Tønder</option>
+                        <option value='837'>Tårnby</option>
+                        <option value='877'>Vallensbæk</option>
+                        <option value='834'>Varde</option>
+                        <option value='893'>Vejen</option>
+                        <option value='849'>Vejle</option>
+                        <option value='890'>Vesthimmerland</option>
+                        <option value='854' selected>Viborg</option>
+                        <option value='901'>Vordingborg</option>
+                        <option value='954'>Ærø</option>
+                        <option value='839'>Aabenraa</option>
+                        <option value='822'>Aalborg</option>
+                        <option value='816'>Aarhus</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+
+        <div class='box'>
+		<span id='login' class='button fancyBtn btn-success ui-state-default' tabindex='4'>
+			<i class='ui-icon ui-icon-circle-arrow-e'></i>
+			<span>Log ind</span>
+		</span>
+        </div>
+    </form>
+</div>
+
+<div id='guide' class='column'>
+    <span class='columnHeader'>Vejledning</span>
+    <div class='box'>
+        1. Læs <a href='/disclaimer'>brugsbetingelserne</a>.
+    </div>
+    <div class='box'>
+        2. Lån bøger på eReolen.dk.
+    </div>
+    <div class='box'>
+        3. Log ind ved at udfylde formularen til venstre.
+    </div>
+    <div class='box'>
+        4. Hent filerne ned på din e-bogslæser.
+    </div>
+</div>
+{% endblock %}

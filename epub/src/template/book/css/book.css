@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+p.Br-dtekst {
+    margin: 0px 17px 10px 0 !important;
+}
+
+p.sideskift {
+    page-break-after: always;
+}
+
+p.indent {
+    margin-top: 0.5em !important;
+}

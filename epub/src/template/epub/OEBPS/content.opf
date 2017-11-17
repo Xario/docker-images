@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0">
+<metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <dc:title opf:file-as="{{ title }}">{{ title }}</dc:title>
+    <dc:creator opf:role="aut">{{ author }}</dc:creator>
+    <dc:language>en</dc:language>
+</metadata>
+<manifest>
+    <item href="toc.ncx" media-type="application/x-dtbncx+xml" id="ncx"/>
+    {% for chunk in chunks %}<item href="{{ loop.index }}.xhtml" id="id{{ loop.index }}" media-type="application/xhtml+xml"/>
+    {% endfor %}{% for external in externals %}<item href="{{ external.name }}" id="ext{{ loop.index }}" media-type="{{ external.type }}"/>
+    {% endfor %}
+</manifest>
+<spine toc="ncx">
+    {% for chunk in chunks %}<itemref idref="id{{ loop.index }}"/>
+    {% endfor %}
+</spine>
+</package>

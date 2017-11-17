@@ -1,0 +1,76 @@
+@CHARSET "UTF-8";
+
+ul.formList > li {
+    float: left;
+}
+
+li.inputHeader {
+    width: 150px;
+}
+
+input {
+    width: 140px;
+    height: 14px;
+}
+
+span#login {
+    float: right;
+    position: relative;
+    top: -4px;
+    right: 3px;
+}
+
+a.chosen-single {
+    position: relative;
+    top: -4px;
+    width: 136px;
+}
+
+div.chosen-container {
+    color: #000;
+    width: 150px !important;
+}
+
+input {
+    position: relative;
+}
+
+div.column {
+    float: left;
+}
+
+span.columnHeader {
+    margin-left: 5px;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+div#guide a {
+    color: #FFF;
+    text-decoration: underline;
+}
+
+div.box {
+    font-size: 10pt;
+}
+
+span.inputWrapper {
+    position: relative;
+}
+
+span.inputWrapper input {
+    left: 0;
+    top: 0;
+    position: absolute !important;
+}
+
+span.inputWrapper input.shown {
+    left: 0;
+    top: 0;
+    position: absolute !important;
+    pointer-events: none;
+}
+
+span.inputWrapper input.hidden {
+    opacity: 0;
+}

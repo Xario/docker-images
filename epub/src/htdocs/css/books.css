@@ -1,0 +1,66 @@
+@CHARSET "UTF-8";
+
+div#noBooks {
+    position: relative;
+    float: left;
+    border: 1px solid;
+    border-radius: 4px;
+    margin: 10px;
+    padding: 5px;
+    background-color: #444444;
+    cursor: pointer;
+    font-size: large;
+    font-weight: bold;
+}
+
+a:link {
+    color: #FFF;
+}
+
+a:visited {
+    color: #FFF;
+}
+
+a:hover {
+    color: #FFF;
+}
+
+a:active {
+    color: #FFF;
+}
+
+li.book {
+    position: relative;
+    float: left;
+    border: 1px solid;
+    border-radius: 4px;
+    margin: 10px;
+    padding: 5px;
+    background-color: #444444;
+    cursor: pointer;
+}
+
+ul.bookInfo {
+    float: right;
+    margin-left: 5px;
+    min-width: 140px;
+}
+
+li.infoHeader {
+    background-color: #0bb103;
+}
+
+li.info {
+    margin-bottom: 10px;
+}
+
+img.bookImg {
+    float: left;
+    height: 160px;
+}
+
+span.downloadBtn {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}

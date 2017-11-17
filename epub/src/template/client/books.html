@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block subTitle %}bøger{% endblock %}
+
+{% block css %}
+<link media='all' type='text/css' href='/css/books.css' rel='stylesheet'/>
+{% endblock %}
+
+{% block script %}
+<script src='/js/books.js'></script>
+{% endblock %}
+
+{% block content %}
+{% if ! books.length %}
+<a href='http://anonym.to/?http://ereolen.dk' target='_blank'>
+    <div id='noBooks'>Ingen lånte bøger, besøg ereolen.dk for at låne</iv>
+        {% else %}
+
+        <ul id='bookList'>
+            {% if ! books.length %}
+            <a href='http://anonym.to/?http://ereolen.dk' target='_blank'>
+                <div id='noBooks'>Ingen lånte bøger, besøg ereolen.dk for at låne</iv>
+            </a>
+            {% endif %}
+            {% for book in books %}
+            <li class='book' id='{{ loop.index }}'>
+                <img class='bookImg' src='{{ book.pic.localSrc }}'/>
+                <ul class='bookInfo'>
+                    <li class='infoHeader'>Titel</li>
+                    <li class='info title'>
+                        {{ book.title }}
+                    </li>
+                    <li class='infoHeader'>Tid tilbage</li>
+                    <li class='info timeLeft'>
+                        {{ book.period }}
+                    </li>
+                </ul>
+                <span class='downloadBtn button fancyBtn btn-success ui-state-default'>
+			<i class='ui-icon ui-icon-circle-arrow-s'></i>
+			<span>Hent bog</span>
+		</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endblock %}
