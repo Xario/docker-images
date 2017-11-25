@@ -54,6 +54,11 @@ LABEL org.freenas.interactive="false"                             \
               \"optional\": true				            \
           },							            \
           {							                  \
+              \"env\": \"OPENVPN_CONFIG\",				\
+              \"descr\": \"CONFIG\",			            \
+              \"optional\": true				            \
+          },							            \
+          {							                  \
               \"env\": \"PUID\",				            \
               \"descr\": \"UserID\",			            \
               \"optional\": true				            \
