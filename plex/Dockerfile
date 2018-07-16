@@ -1,4 +1,4 @@
-FROM plexinc/pms-docker:beta
+FROM plexinc/pms-docker:1.11.3.4803-c40bba82e
 LABEL org.freenas.interactive="false" 		\
       org.freenas.version="Latest (Auto Update)"		\
       org.freenas.upgradeable="true"		\
