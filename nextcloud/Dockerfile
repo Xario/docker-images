@@ -1,13 +1,13 @@
-FROM nextcloud:14-fpm
+FROM nextcloud:14-apache
 LABEL org.freenas.interactive="false"                           \
       org.freenas.version="2"                                   \
       org.freenas.upgradeable="true"                            \
       org.freenas.expose-ports-at-host="true"                   \
       org.freenas.autostart="true"                              \
       org.freenas.web-ui-protocol="http"                        \
-      org.freenas.web-ui-port="9000"                            \
+      org.freenas.web-ui-port="80"                            \
       org.freenas.web-ui-path=""                                \
-      org.freenas.port-mappings="9000:9000/tcp"                 \
+      org.freenas.port-mappings="80:80/tcp"                 \
       org.freenas.volumes="[						            \
           {								                        \
               \"name\": \"/var/www/html\",				        \
