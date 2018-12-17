@@ -75,13 +75,14 @@ var getSessionCookie = function (info, callback) {
         'name': info['user'],
         'pass': info['pass'],
         'form_build_id': info['formBuildId'],
-        'form_id': 'user_login',
-        'retailer_id': info['retailer']
+        'form_id': 'user_login_block',
+        'retailer_id': info['retailer'],
+	'op' : 'Log ind'
     });
 
     var options = {
         host: 'ereolen.dk',
-        path: '/system/ajax',
+        path: '/content/ny-forside',
         method: 'POST',
         headers: {
             'Host': 'ereolen.dk',
@@ -197,7 +198,7 @@ var getBookInfo = function (info, callback) {
             $loans.each(function () {
                 var book = {};
                 var $this = $(this);
-                var $pic = $this.find('div.ting-cover img');
+                var $pic = $this.find('img');
                 if ($pic.length) {
                     book['pic'] = {
                         src: $pic.attr('src')
