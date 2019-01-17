@@ -3,11 +3,7 @@ FROM tynor88/rclone:1.40
 LABEL org.freenas.interactive="false"			\
       org.freenas.version="1.0.0" 			\
       org.freenas.upgradeable="true" 			\
-      org.freenas.expose-ports-at-host="true" 		\
       org.freenas.autostart="true" 			\
-      org.freenas.bridged="true" 			\
-      org.freenas.capabilities-add="[\"NET_ADMIN\"]"        \
-      org.freenas.port-mappings="22:22/tcp" 					\
       org.freenas.volumes="[				\
           {						\
               \"name\": \"/config\",			\
