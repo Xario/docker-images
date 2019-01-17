@@ -11,7 +11,7 @@ LABEL org.freenas.interactive="false"			\
           }, \
           {						\
               \"name\": \"/data\",			\
-              \"descr\": \"docker socket, use: /var/run/docker.sock on the VM\"	\
+              \"descr\": \"data dir\"	\
           }				\
       ]" \
       org.freenas.settings="[ 					      \
