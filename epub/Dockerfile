@@ -1,7 +1,8 @@
 FROM mhart/alpine-node:6
 WORKDIR /epub
 ADD src /epub
-CMD ["node", "epub.js"]
+RUN npm install -g nodemon
+CMD ["nodemon", "epub.js"]
 EXPOSE 80
 LABEL org.freenas.interactive="false"                                         \
       org.freenas.version="2"                                                 \
