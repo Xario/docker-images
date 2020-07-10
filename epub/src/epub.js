@@ -14,7 +14,7 @@ var mkdirp = require('mkdirp');
 var mime = require('mime');
 var decomment = require('decomment');
 
-var DEBUG = false;
+var DEBUG = true;
 var spawn = cp.spawn;
 
 swig.setDefaults({autoescape: false});
@@ -77,12 +77,12 @@ var getSessionCookie = function (info, callback) {
         'form_build_id': info['formBuildId'],
         'form_id': 'user_login_block',
         'retailer_id': info['retailer'],
-	'op' : 'Log ind'
+        'op' : 'Log ind'
     });
 
     var options = {
         host: 'ereolen.dk',
-        path: '/content/ny-forside',
+        path: '/system/ajax',
         method: 'POST',
         headers: {
             'Host': 'ereolen.dk',
