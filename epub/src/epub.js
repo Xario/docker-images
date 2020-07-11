@@ -14,7 +14,7 @@ var mkdirp = require('mkdirp');
 var mime = require('mime');
 var decomment = require('decomment');
 
-var DEBUG = true;
+var DEBUG = false;
 var spawn = cp.spawn;
 
 swig.setDefaults({autoescape: false});
@@ -75,7 +75,7 @@ var getSessionCookie = function (info, callback) {
         'name': info['user'],
         'pass': info['pass'],
         'form_build_id': info['formBuildId'],
-        'form_id': 'user_login_block',
+        'form_id': 'user_login',
         'retailer_id': info['retailer'],
         'op' : 'Log ind'
     });
@@ -1189,21 +1189,21 @@ app.get('/logout', function (req, res) {
         });
     });
 });
-/*
+
 var lee = require('letsencrypt-express');
 var options = {
     server: 'https://acme-v01.api.letsencrypt.org/directory',
     email: 'letsencrypt@xar.io',
     agreeTos: true,
-    approveDomains: [ 'xar.io', 'epub.xar.io' ],
+    approveDomains: [ 'epub.xar.io' ],
     app: app
 };
 
 lee
 	.create(options)
 	.listen(80, 443);
-*/
-app.listen(80, function () {
+/*
+app.listen(8001, function () {
     console.log('listening on port 80!')
 });
 /*
